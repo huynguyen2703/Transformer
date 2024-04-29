@@ -1,4 +1,12 @@
-﻿namespace Transformer;
+// Huy Quoc Nguyen
+// CPSC 3200 : P3 Transformers
+/*
+------------------------------ Class And Interface Invariants-----------------------------
+Transformer is a parent of transformers family, this class represent a Transformer object 
+that can hold a target integer and performs various actions based on client's provided 
+values and function calls. Transformer class supports the guessing of the encapsulated value through method Transform(int guessValue), 
+*/
+namespace Transformer;
 
 public class Transformer
 {
@@ -39,7 +47,10 @@ public class Transformer
     public FirstTierOperation GetFirstTierOperation => FirstTierType;
 
 
-    // methods section 
+    // methods section
+    /// PRECONDITIONS: None
+    /// POSTCONDTITIONS: None 
+    ///
     public Transformer(int targetValue, int threshold = 0)
     {
         // other data initialized to correct default values
@@ -50,7 +61,13 @@ public class Transformer
         FirstTierType = FirstTierOperation.Unknown;
     }
 
-
+    /// PRECONDITIONS : Transformer object must be active
+    /// POSTCONDITIONS : a number will be sent back as a respose
+    ///                  0 : correct guess, -1 : incorrect guess,
+    ///                  the sum of target value and guess value, 
+    ///                  or the difference of the target value
+    ///                  and a guess value.
+    ///
     public virtual double Transform(int guessValue)
     {
         if (TaskHelper(guessValue))
